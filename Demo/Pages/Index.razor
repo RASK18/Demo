@@ -1,7 +1,93 @@
 ﻿@page "/"
+@inject IJSRuntime js
 
-<h1>Hello, world!</h1>
+<div class="swiper" style="width: 1200px; height: 400px">
+    <div class="swiper-wrapper" style="text-align: center">
+        <div class="swiper-slide" style="background-image: url(/img/perro4.jpg); background-size: cover; ">
+            <div style="padding-top: 100px; font-size: 50px; color: darkviolet">¿Puede tu perro hablar?</div>
+        </div>
+        <div class="swiper-slide" style="background-image: url(/img/perro5.jpg); background-size: cover; ">
+            <div style="padding-top: 100px; font-size: 80px; color: darkviolet">Habitos saludables</div>
+        </div>
+    </div>
+    <div class="swiper-pagination"></div>
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+</div>
 
-Welcome to your new app.
+<br />
+<br />
 
-<SurveyPrompt Title="How is Blazor working for you?" />
+<div class="card-deck">
+    <div class="card" style="width: 18rem;">
+        <img class="card-img-top" src="https://www.clinicasveterinariaspg.es/wp-content/uploads/2020/09/whoweare_icon.png" alt="Card image cap" style="width: 123px">
+        <div class="card-body">
+            <h5 class="card-title">Dedicación</h5>
+            <p class="card-text">Vivimos por y para nuestros pacientes</p>
+        </div>
+    </div>
+
+    <div class="card" style="width: 18rem;">
+        <img class="card-img-top" src="https://www.clinicasveterinariaspg.es/wp-content/uploads/2020/09/whatwedo_icon.png" alt="Card image cap" style="width: 123px">
+        <div class="card-body">
+            <h5 class="card-title">Vocación</h5>
+            <p class="card-text">Cuidar de la salud de tu mascota es la prioridad de los más de 50 veterinarios en plantilla.</p>
+        </div>
+    </div>
+
+    <div class="card" style="width: 18rem;">
+        <img class="card-img-top" src="https://www.clinicasveterinariaspg.es/wp-content/uploads/2020/09/whereweare_icon.png" alt="Card image cap" style="width: 123px">
+        <div class="card-body">
+            <h5 class="card-title">Profesionalidad</h5>
+            <p class="card-text">Trabajamos para conseguir los máximos estándares de calidad en el servicio.</p>
+        </div>
+    </div>
+
+    <div class="card" style="width: 18rem;">
+        <img class="card-img-top" src="https://www.clinicasveterinariaspg.es/wp-content/uploads/2020/09/ourvets_icon.png" alt="Card image cap" style="width: 123px">
+        <div class="card-body">
+            <h5 class="card-title">Excelencia veterinaria</h5>
+            <p class="card-text">Somos un referente en el sector y día a día seguimos buscando la excelencia</p>
+        </div>
+    </div>
+
+</div>
+
+<br />
+<br />
+
+<div style="width: 90%; height: 400px; overflow: hidden; position: relative;">
+    <img src="/img/gato1.jpg" onload="parallax(this)" style="z-index: -1; position: absolute" />
+    <div style="text-align: center; display: block">
+        <span data-aos="fade-right" data-aos-duration="3000" style="display: block; padding-top: 80px; font-size: 80px; color: darkviolet;">Servicios veterinarios profesionales</span>
+    </div>
+</div>
+
+<br />
+<br />
+
+<div data-aos="fade-right" class="container">
+    <div class="row">
+        <div class="col-6">
+            <img src="/img/perro1.jpg" style="width: 100%" />
+        </div>
+        <div class="col-6">
+            <h2>Planes de Salud PREMIUM</h2>
+            <span>
+                Nuestros Planes de Salud te permiten venir a consulta siempre que lo necesites.
+                Medicina preventiva y todas las visitas que necesites, incluidas.
+            </span>
+        </div>
+    </div>
+</div>
+
+<br />
+<br />
+
+@code{
+    protected override void OnAfterRender(bool firstRender)
+    {
+        if (firstRender)
+            js.InvokeVoidAsync("carousel");
+    }
+}
